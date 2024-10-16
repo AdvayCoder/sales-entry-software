@@ -1,0 +1,31 @@
+
+
+.form-inline-div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+
+.seller-name-container {
+    float: right;
+}
+
+section.form-main {
+    display: block;
+}
+
+label, span {
+    display: block;
+}
+
+textarea {
+    resize: none;
+}
+
+.transaction-list-el {
+    display: inline-flex;
+    padding: 10px 50px;
+    justify-content: space-between;
+    align-items: center;
+}

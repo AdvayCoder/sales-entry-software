@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sales Entry</title>
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <h1>Enter Sales:</h1>
+        <main>
+            <form id="transaction-form">
+                <span class="form-inline-div seller-name-container">
+                    <label>Seller Name:</label>
+                    <input type="text" class="seller-name"></input>
+                </span>
+
+                <span class="form-inline-div"> </span>
+
+                <section class="form-main">
+                    <span class="form-inline-div">
+                        <label>Customer Name:</label>
+                        <input type="text" class="customer-name"></input>
+                    </span>
+
+                    <span class="form-inline-div">
+                        <label>Medium:</label>
+                        <select class="medium">
+                            <option value="Cash">Cash</option>
+                            <option value="Online">Online</option>
+                        </select>
+                    </span>
+
+                    <ol class="transaction-list">
+                        <li class="transaction-list-el">
+                                <select class="product-select">
+                                    <option value="Product 1">Product 1</option>
+                                    <option value="Product 2">Product 2</option>
+                                    <option value="Product 3">Product 3</option>
+                                    <option value="Product 4">Product 4</option>
+                                </select>
+
+                                <input type="text" class="price-field" placeholder="Price" ></input>
+
+                                <input type="text" class="discount-field" placeholder="Discount"></input
+                                >
+
+                                <input type="text" class="quantity-field" placeholder="Quantity"></input
+                                >
+                        </li>
+                    </ol>
+
+                    <button type="button" class="add-transaction-btn">+</button>
+                </section>
+
+                <button type="submit"  class="save-transaction-btn">Save Transaction</button>
+            </form>
+        </main>
+
+        <!-- Script -->
+        <script src="./script.js" />
+    </body>
+</html>
