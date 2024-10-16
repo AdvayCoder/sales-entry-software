@@ -9,10 +9,7 @@ const saveTransactionBtn = document.getElementsByClassName(
     "save-transaction-btn"
 )[0];
 
-console.log(
-    "current sales localStorage",
-    localStorage.getItem(CURRENT_SALE_SESSION_KEY)
-);
+//Save CSV data
 
 const makeCSVData = (data) => {
     //accepts an array of objects, with each object corresponding to a transaction
@@ -36,8 +33,6 @@ const saveCSVFile = (data) => {
     const blob = new Blob([csvData], { type: "text/csv" });
 
     const url = URL.createObjectURL(blob);
-
-    console.log("url", url);
 
     const a = document.createElement("a");
 
@@ -97,14 +92,16 @@ saveTransactionBtn.addEventListener("click", (event) => {
         }
 
         transactionArr.push({
-            date,
-            sellerName,
-            customerName,
-            medium,
+            
             productID,
+            date,
             price,
             discount,
             quantity,
+            totalCost: (price - discount) * quantity,
+            medium,
+            customerName,
+            sellerName
         });
     });
 
@@ -117,16 +114,6 @@ saveTransactionBtn.addEventListener("click", (event) => {
                       localStorage.getItem(CURRENT_SALE_SESSION_KEY)
                   ).concat(transactionArr)
               )
-    );
-
-    console.log(JSON.parse(localStorage.getItem(CURRENT_SALE_SESSION_KEY)));
-
-    console.log(
-        JSON.stringify(
-            JSON.parse(localStorage.getItem(CURRENT_SALE_SESSION_KEY)).concat(
-                transactionArr
-            )
-        )
     );
 
     form.reset();
