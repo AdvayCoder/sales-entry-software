@@ -47,7 +47,14 @@ const saveCSVFile = (data) => {
 document
     .getElementsByClassName("save-transaction-file")[0]
     .addEventListener("click", (event) => {
+        //backup
+        localStorage.setItem(
+            "prevSaleSession",
+            localStorage.getItem(CURRENT_SALE_SESSION_KEY)
+        );
         saveCSVFile(JSON.parse(localStorage.getItem(CURRENT_SALE_SESSION_KEY)));
+        //reset
+        localStorage.setItem(CURRENT_SALE_SESSION_KEY, "");
     });
 
 // SAVE TRANSACTION btn
@@ -92,16 +99,15 @@ saveTransactionBtn.addEventListener("click", (event) => {
         }
 
         transactionArr.push({
-            
             productID,
             date,
             price,
             discount,
             quantity,
-            totalCost: (price - discount) * quantity,
+            totalCost: price * quantity - discount,
             medium,
             customerName,
-            sellerName
+            sellerName,
         });
     });
 
@@ -116,6 +122,14 @@ saveTransactionBtn.addEventListener("click", (event) => {
               )
     );
 
+    transactionListEl = transactionListEl.cloneNode(true);
+
+    document.getElementsByClassName("transaction-list")[0].innerText = "";
+
+    document
+        .getElementsByClassName("transaction-list")[0]
+        .appendChild(transactionListEl);
+
     form.reset();
 });
 
@@ -129,7 +143,5 @@ document
             .append(transactionListEl);
 
         //reset the cloned node
-        transactionListEl = document
-            .getElementsByClassName("transaction-list-el")[0]
-            .cloneNode(true);
+        transactionListEl = transactionListEl.cloneNode(true);
     });
