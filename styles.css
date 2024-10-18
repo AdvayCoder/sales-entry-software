@@ -42,6 +42,11 @@ textarea {
     display: inline;
 }
 
+.delete-transaction-li-btn {
+    right: 20px;
+    position: relative;
+}
+
 .transaction-list-container {
     display: flex;
     flex-direction: row;

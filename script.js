@@ -9,6 +9,13 @@ const saveTransactionBtn = document.getElementsByClassName(
     "save-transaction-btn"
 )[0];
 
+//Delete transaction product button
+document
+    .getElementsByClassName("delete-transaction-li-btn")[0]
+    .addEventListener("click", (event) => {
+        event.target.parentElement.remove();
+    });
+
 //Save CSV data
 
 const makeCSVData = (data) => {
@@ -138,9 +145,17 @@ saveTransactionBtn.addEventListener("click", (event) => {
 document
     .getElementsByClassName("add-transaction-btn")[0]
     .addEventListener("click", (event) => {
-        document
+        const newListEl = document
             .getElementsByClassName("transaction-list")[0]
-            .append(transactionListEl);
+            .appendChild(transactionListEl);
+
+        console.log(newListEl)
+
+        newListEl
+            .getElementsByClassName("delete-transaction-li-btn")[0]
+            .addEventListener("click", (event) => {
+                event.target.parentElement.remove();
+            });
 
         //reset the cloned node
         transactionListEl = transactionListEl.cloneNode(true);
